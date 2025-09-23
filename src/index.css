@@ -1,0 +1,18 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components {
+  .filter-buttons-responsive {
+    @apply bottom-0 left-0 w-full px-4 py-3 bg-white border-t flex gap-2 pb-5 z-50;
+  }
+}
+
+html,
+body,
+#root {
+  overflow-x: hidden;
+}
+body {
+  -webkit-overflow-scrolling: touch; /* scroll más suave en iOS */
+}
