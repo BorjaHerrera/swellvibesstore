@@ -102,7 +102,7 @@ export const ProductsDashboard = () => {
 
   return (
     <div className='w-full my-8 p-6 rounded-lg shadow-lg bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#1e3a8a] text-white'>
-      <h2 className='text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500'>
+      <h2 className='inline-block text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 text-left'>
         Gestionar Productos
       </h2>
 

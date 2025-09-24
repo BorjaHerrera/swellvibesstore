@@ -4,6 +4,8 @@ import { LoadingContext } from '../../components/Loading/LoadingContext';
 import { API } from '../../utils/API/API';
 import { Form } from '../../components/Form/Form';
 import { useNavigate } from 'react-router-dom';
+import { DeleteAccountButton } from '../../components/buttons/DeleteAccountButton';
+import { LogoutButton } from '../../components/buttons/LogoutButton';
 
 export const UserPage = () => {
   const { user, logout, token, login } = useContext(AuthContext);
@@ -17,11 +19,6 @@ export const UserPage = () => {
     setMessage(text);
     setError(isError);
     setTimeout(() => setMessage(''), 1000);
-  };
-
-  const handleLogout = () => {
-    logout();
-    navigate('/');
   };
 
   const handleUpdate = async (data) => {
@@ -46,26 +43,15 @@ export const UserPage = () => {
   };
 
   const handleDeleteUser = async () => {
-    if (
-      !window.confirm(
-        '¿Estás seguro de que quieres eliminar tu cuenta? Esta acción no se puede deshacer.'
-      )
-    ) {
-      return;
-    }
-
     try {
       setLoading(true);
 
-      const result = await API({
+      await API({
         endpoint: `/usuarios/${user._id}`,
         method: 'DELETE',
         token
       });
 
-      console.log(result); // opcional, para depurar
-
-      // cerrar sesión y redirigir al home
       logout();
       navigate('/');
       alert('Tu cuenta ha sido eliminada correctamente');
@@ -111,20 +97,11 @@ export const UserPage = () => {
           </p>
         )}
 
-        <button
-          onClick={handleLogout}
-          className='w-full bg-white text-sky-900 font-semibold py-2 px-4 rounded hover:bg-pink-700 hover:text-white transition mt-4'
-        >
-          CERRAR SESIÓN
-        </button>
+        {/* Cerrar sesión */}
+        <LogoutButton />
 
-        {/* Botón eliminar cuenta */}
-        <button
-          onClick={handleDeleteUser}
-          className='w-full bg-pink-700 text-white font-semibold py-2 px-4 rounded hover:bg-pink-600 transition mt-2'
-        >
-          ELIMINAR CUENTA
-        </button>
+        {/* Eliminar cuenta*/}
+        <DeleteAccountButton onDelete={handleDeleteUser} />
       </div>
     </div>
   );

@@ -40,7 +40,7 @@ export const CarouselHome = () => {
 
   return (
     <section
-      className='relative w-full h-screen max-[1025px]:max-h-[450px] overflow-hidden'
+      className='relative w-full h-screen overflow-hidden'
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
@@ -65,7 +65,7 @@ export const CarouselHome = () => {
               className='w-full h-full object-cover'
             />
           )}
-          <div className='absolute bottom-20 max-[1025px]:bottom-10  max-[900px]:bottom-10  left-3 flex flex-col items-start justify-start text-white text-start px-4 pr-8 z-10 w-3/5 max-[1100px]:w-3/4 max-[700px]:w-full'>
+          <div className='absolute bottom-20  left-3 flex flex-col items-start justify-start text-white text-start px-4 pr-8 z-10 w-3/5 max-[1100px]:w-3/4 max-[700px]:w-full'>
             <h1 className='max-[600px]:text-4xl max-[900px]:text-5xl min-[901px]:text-6xl font-bold mb-4'>
               {article.title}
             </h1>

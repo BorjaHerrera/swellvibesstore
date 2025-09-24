@@ -48,7 +48,7 @@ export const RegisterPage = () => {
   };
 
   return (
-    <div className='min-h-screen bg-cyan-700 flex items-start justify-center px-4 pt-24'>
+    <div className='min-h-screen bg-cyan-700 flex items-start justify-center px-4 pt-14 pb-6'>
       <div className='w-full max-w-lg px-4'>
         <Form
           title='REGISTRO'

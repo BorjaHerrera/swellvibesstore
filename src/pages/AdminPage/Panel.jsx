@@ -1,16 +1,35 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { AuthContext } from '../../AuthContext/AuthContext';
 
 export const Panel = ({ activePanel, setActivePanel }) => {
   const [isOpen, setIsOpen] = useState(true);
+  const { logout } = useContext(AuthContext);
 
   const buttons = [
-    { id: 'crear', label: 'Crear producto', icon: '/assets/crear.png' },
-    { id: 'buscar', label: 'Buscar producto', icon: '/assets/buscar.png' },
+    {
+      id: 'crear',
+      label: 'Crear producto',
+      icon: '/assets/crear.png',
+      action: () => setActivePanel('crear')
+    },
+    {
+      id: 'buscar',
+      label: 'Buscar producto',
+      icon: '/assets/buscar.png',
+      action: () => setActivePanel('buscar')
+    },
     {
       id: 'gestionar',
       label: 'Gestionar categorías',
-      icon: '/assets/gestionar.png'
-    }
+      icon: '/assets/gestionar.png',
+      action: () => setActivePanel('gestionar')
+    },
+    {
+      id: 'logout',
+      label: 'Cerrar sesión',
+      icon: '/assets/logout.png',
+      action: logout
+    } // <-- aquí
   ];
 
   return (
@@ -38,12 +57,12 @@ export const Panel = ({ activePanel, setActivePanel }) => {
 
       {/* Botones del panel */}
       {isOpen && (
-        <>
-          {buttons.map(({ id, label, icon }) => (
+        <div className='flex flex-col gap-4'>
+          {buttons.map(({ id, label, icon, action }) => (
             <button
               key={id}
-              onClick={() => setActivePanel(id)}
-              className={`flex items-center gap-3 px-1 py-2 rounded-lg transition
+              onClick={action}
+              className={`flex items-center gap-3 px-3 py-2 rounded-lg transition
                 ${activePanel === id ? 'bg-pink-700' : 'hover:text-pink-500'}
                 max-[396px]:text-sm`}
             >
@@ -55,7 +74,7 @@ export const Panel = ({ activePanel, setActivePanel }) => {
               {label}
             </button>
           ))}
-        </>
+        </div>
       )}
     </div>
   );

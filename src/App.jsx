@@ -21,7 +21,7 @@ const App = () => {
       <ScrollToTop />
       <div className='flex flex-col min-h-[100dvh] pt-16'>
         <Header />
-        <main className='flex-1 pb-32'>
+        <main className='flex-1 pb-3'>
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/productos' element={<ProductsPage />} />

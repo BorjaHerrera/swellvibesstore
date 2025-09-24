@@ -13,7 +13,7 @@ export const ProductsHome = () => {
       {productsArticles.map((article) => (
         <article
           key={article.id}
-          className={`relative w-1/3  max-h-[600px] pb-6 max-[1024px]:max-h-[250px] overflow-hidden ${
+          className={`relative w-1/3  max-h-[600px] overflow-hidden ${
             article.id === 1 || article.id === 2
               ? 'border-r-4 border-white'
               : ''

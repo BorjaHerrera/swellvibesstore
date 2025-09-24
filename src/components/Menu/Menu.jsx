@@ -58,13 +58,14 @@ export const Menu = ({ state = {}, dispatch = () => {} }) => {
             from-[rgba(15,52,67,0.95)]
             via-[rgba(6,100,130,0.7)]
             to-[rgba(15,52,67,0.95)]
-            flex flex-col justify-between
+            flex flex-col
             p-6 pt-20
             text-white
             z-50
           '
         >
-          <div>
+          {/* Contenido principal */}
+          <div className='flex-1 overflow-y-auto'>
             {currentView === 'categories' && (
               <ul className='flex flex-col gap-4'>
                 {categories.map((category) => (
@@ -79,7 +80,6 @@ export const Menu = ({ state = {}, dispatch = () => {} }) => {
 
                           const filters = data.filters || {};
 
-                          // Elegir 'style' si hay al menos un valor válido, si no 'brand'
                           let filterKeyToUse;
                           if (
                             filters.style &&
@@ -118,13 +118,13 @@ export const Menu = ({ state = {}, dispatch = () => {} }) => {
                     >
                       <span
                         className='
-      relative text-lg cursor-pointer
-      transform transition duration-150 origin-bottom-right
-      hover:-translate-y-1 hover:-rotate-3 hover:underline-none
-      before:absolute before:-bottom-0.5 before:left-0 before:h-[1px] before:w-0
-      before:bg-current before:transition-all before:duration-150
-      hover:before:w-full
-    '
+                          relative text-lg cursor-pointer
+                          transform transition duration-150 origin-bottom-right
+                          hover:-translate-y-1 hover:-rotate-3 hover:underline-none
+                          before:absolute before:-bottom-0.5 before:left-0 before:h-[1px] before:w-0
+                          before:bg-current before:transition-all before:duration-150
+                          hover:before:w-full
+                        '
                       >
                         {category.name}
                       </span>
@@ -170,10 +170,11 @@ export const Menu = ({ state = {}, dispatch = () => {} }) => {
                 </div>
               </div>
             )}
+          </div>
 
-            <div className='flex justify-end buttom-0 pt-[480px] max-[550px]:pt-[450px] max-[400px]:pt-[400px]'>
-              <CloseMenuButton onClose={() => closeMenu(dispatch)} />
-            </div>
+          {/* Botón cerrar abajo */}
+          <div className='flex justify-end pb-6'>
+            <CloseMenuButton onClose={() => closeMenu(dispatch)} />
           </div>
         </nav>
       )}
