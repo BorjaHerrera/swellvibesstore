@@ -11,11 +11,11 @@ export const SearchResults = () => {
 
   if (!query) {
     return (
-      <div className='w-full bg-red-100 p-4'>
+      <div className='w-full p-4'>
         <p className='text-sm text-gray-600 mb-5 pl-[17%] max-[900px]:pl-0'>
           Es tendencia
         </p>
-        <ul className='flex flex-wrap gap-2 w-full bg-red-100 pl-[17%] max-[900px]:pl-0'>
+        <ul className='flex flex-wrap gap-2 w-full pl-[17%] max-[900px]:pl-0'>
           {trendingItems.map((item) => (
             <li key={item.label}>
               <Link
