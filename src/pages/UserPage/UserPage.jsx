@@ -66,7 +66,7 @@ export const UserPage = () => {
   if (!user) return null;
 
   return (
-    <div className='min-h-screen bg-cyan-700 flex flex-col items-center px-8 pt-24'>
+    <div className='min-h-screen bg-cyan-700 flex flex-col items-center px-8 pt-24 pb-8'>
       <h1 className='text-4xl font-bold text-white text-center mb-6 pb-6'>
         Mi Cuenta
       </h1>
