@@ -12,6 +12,8 @@ import { ProductsFetch } from './ProductsFetch';
 import { getCategoryFilters } from '../../functions/getCategoryFilters';
 import { ProductsList } from './ProductsList';
 import { FilterPanel } from '../../components/Filter/FilterPanel';
+import { ScrollToTopSamePage } from '../../components/ScrollToTop/ScrollToTopSamePage';
+import { PaginationButtons } from '../../components/PaginationButtons/PaginationButtons';
 
 export const ProductsPage = () => {
   const [searchParams] = useSearchParams();
@@ -52,7 +54,7 @@ export const ProductsPage = () => {
         setFilters({ dispatch, filters: {} });
       });
 
-    setCurrentPage(1); // reinicia página al cambiar sección
+    setCurrentPage(1);
   }, [searchParams, dispatch]);
 
   const readableSection =
@@ -69,6 +71,8 @@ export const ProductsPage = () => {
 
           return (
             <section aria-label='Listado de productos' className='p-4'>
+              <ScrollToTopSamePage trigger={currentPage} />
+
               <div className='relative sticky top-16 z-20 w-full bg-white pb-5'>
                 <div className='flex flex-col items-start px-3 gap-1 max-[1000px]:flex-row max-[1000px]:justify-between max-[1000px]:items-end'>
                   <h1 className='text-2xl font-semibold'>
@@ -108,27 +112,12 @@ export const ProductsPage = () => {
                 </div>
               </div>
 
-              {/* Paginación */}
               {totalPages > 1 && (
-                <div className='flex justify-center mt-6 gap-2'>
-                  <button
-                    disabled={currentPage === 1}
-                    onClick={() => setCurrentPage((prev) => prev - 1)}
-                    className='px-4 py-2 border rounded disabled:opacity-50'
-                  >
-                    Anterior
-                  </button>
-                  <span className='px-2 py-2'>
-                    {currentPage} / {totalPages}
-                  </span>
-                  <button
-                    disabled={currentPage === totalPages}
-                    onClick={() => setCurrentPage((prev) => prev + 1)}
-                    className='px-4 py-2 border rounded disabled:opacity-50'
-                  >
-                    Siguiente
-                  </button>
-                </div>
+                <PaginationButtons
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={setCurrentPage}
+                />
               )}
             </section>
           );
