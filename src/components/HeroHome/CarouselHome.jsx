@@ -51,13 +51,23 @@ export const CarouselHome = () => {
           style={{ opacity: index === currentIndex ? 1 : 0 }}
         >
           {article.image.endsWith('.mp4') ? (
-            <video
-              ref={index === currentIndex ? videoRef : null}
-              src={article.image}
-              muted
-              loop
-              className='w-full h-full object-cover'
-            />
+            <>
+              {/* Vídeo desktop */}
+              <video
+                ref={index === currentIndex ? videoRef : null}
+                src={article.image}
+                muted
+                loop
+                playsInline
+                className='w-full h-full object-cover max-[1100px]:hidden'
+              />
+              {/* Imagen móviles/tablets */}
+              <img
+                src='https://res.cloudinary.com/djvxu2kyn/image/upload/v1758789122/sincerely-media-oC32cy4x-ZA_tdtdsz.jpg'
+                alt={article.title}
+                className='hidden max-[1100px]:block w-full h-full object-cover'
+              />
+            </>
           ) : (
             <img
               src={article.image}
